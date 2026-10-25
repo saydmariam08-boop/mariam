@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To Afify, With Love</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700&display=swap');
+
+:root {
+  --paper: #f8f5ef;
+  --ink: #392c30;
+  --wine: #783d4c;
+  --rose: #c49a9a;
+  --muted: #95847f;
+  --line: #e8dfd6;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Cairo', sans-serif;
+}
+
+button { font: inherit; cursor: pointer; }
+
+a { color: inherit; text-decoration: none; }
+
+.nav {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: 'Amiri', serif;
+  font-size: 25px;
+  color: var(--wine);
+}
+
+.nav-note {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.hero {
+  max-width: 1240px;
+  min-height: 660px;
+  margin: auto;
+  padding: 80px 7% 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.eyebrow {
+  color: var(--wine);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 22px;
+  direction: ltr;
+  text-align: right;
+}
+
+h1 {
+  font-family: 'Amiri', serif;
+  font-size: clamp(45px, 6vw, 77px);
+  line-height: 1.35;
+  font-weight: 400;
+  margin: 0;
+}
+
+h1 span {
+  display: block;
+  color: var(--wine);
+}
+
+.intro {
+  color: #82736e;
+  font-size: 14px;
+  line-height: 2.5;
+  max-width: 420px;
+  margin: 22px 0 28px;
+}
+
+.primary {
+  background: var(--wine);
+  color: #fffaf5;
+  border: 1px solid var(--wine);
+  padding: 13px 25px;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.primary:hover {
+  background: #542b36;
+  transform: translateY(-2px);
+}
+
+.text-link {
+  display: inline-block;
+  margin-right: 17px;
+  font-size: 12px;
+  color: var(--wine);
+  border-bottom: 1px solid var(--rose);
+  padding-bottom: 4px;
+}
+
+.art-frame {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  margin: auto;
+}
+
+.art-frame::before {
+  content: '';
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+  border: 1px solid #d9c6bc;
+  z-index: 0;
+}
+
+.art {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: #eee6dc;
+  display: block;
+}
+
+.art-caption {
+  text-align: left;
+  direction: ltr;
+  margin-top: 27px;
+  color: var(--muted);
+  font-family: 'Amiri', serif;
+  font-style: italic;
+  font-size: 17px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: var(--rose);
+  padding: 24px 15px;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  height: 1px;
+  background: var(--line);
+  width: 100px;
+}
+
+.section {
+  padding: 100px 7%;
+}
+
+.message {
+  background: #efe7df;
+  text-align: center;
+}
+
+.small-label {
+  font-size: 10px;
+  color: var(--wine);
+  letter-spacing: 3px;
+  direction: ltr;
+}
+
+.section h2 {
+  font-family: 'Amiri', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 49px);
+  margin: 17px 0;
+}
+
+.description {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 2.6;
+  color: #756761;
+  font-size: 14px;
+}
+
+.quote-box {
+  max-width: 760px;
+  margin: 40px auto 0;
+  padding: 38px 25px;
+  border-top: 1px solid #d7c7bd;
+  border-bottom: 1px solid #d7c7bd;
+}
+
+.quote {
+  font-family: 'Amiri', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  line-height: 2;
+  min-height: 100px;
+  transition: opacity .25s;
+}
+
+.quote-number {
+  font-size: 11px;
+  color: #9b8178;
+  margin-bottom: 17px;
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid #a78a83;
+  color: var(--wine);
+  padding: 11px 22px;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.letter-section {
+  text-align: center;
+  background: var(--paper);
+}
+
+.letter-card {
+  max-width: 650px;
+  margin: 38px auto 0;
+  padding: 45px;
+  text-align: right;
+  border: 1px solid var(--line);
+  background: #fcfaf6;
+}
+
+.letter-top {
+  font-family: 'Amiri', serif;
+  color: var(--wine);
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.letter-content {
+  display: none;
+  line-height: 2.6;
+  color: #70615c;
+  font-size: 14px;
+  animation: fade .5s ease;
+}
+
+.letter-content.open { display: block; }
+
+.signature {
+  font-family: 'Amiri', serif;
+  font-size: 27px;
+  color: var(--wine);
+  text-align: left;
+  margin-top: 28px;
+}
+
+.closing {
+  padding: 55px 20px;
+  text-align: center;
+  background: var(--wine);
+  color: #f8eee7;
+}
+
+.closing .names {
+  font-family: 'Amiri', serif;
+  font-size: 38px;
+}
+
+.closing p {
+  font-size: 12px;
+  color: #e2c9c6;
+  line-height: 2;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width: 760px) {
+  .nav { height: 68px; padding: 0 6%; }
+  .nav-note { font-size: 10px; }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 65px 8% 55px;
+    gap: 48px;
+  }
+  .hero-copy { order: 1; }
+  .art-frame { order: 2; max-width: 390px; }
+  .art-caption { font-size: 15px; }
+  .section { padding: 75px 7%; }
+  .letter-card { padding: 27px 22px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="brand">Mariam & Afify</div>
+  <div class="nav-note">MADE WITH LOVE · 01</div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">A LITTLE REMINDER FOR YOU</div>
+
+      <h1>
+        إلى عفيفي،
+        <span>من مريم.</span>
+      </h1>
+
+      <p class="intro">
+        مش كل الأيام لازم تكون سهلة، ومش كل الطرق لازم تكون واضحة.
+        بس نفسي تفتكر دايمًا إنك قادر تكمل، وإن كل خطوة صغيرة
+        بتاخدها النهارده بتفرق في بكرة.
+      </p>
+
+      <button class="primary" onclick="scrollToSection('letter')">
+        عندي كلام عايزة أقولهولك
+      </button>
+
+      <a class="text-link" href="#reminder">اقرأ رسالتك ←</a>
+    </div>
+
+    <div>
+      <div class="art-frame">
+
+        <!-- Original line-art illustration drawn with SVG -->
+        <svg class="art" viewBox="0 0 500 600"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="رسمة فنية لشخصين يجلسان بجوار بعضهما تحت السماء">
+
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0.8" y2="1">
+              <stop offset="0%" stop-color="#e6d7d0"/>
+              <stop offset="100%" stop-color="#f4eae0"/>
+            </linearGradient>
+            <linearGradient id="ground" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#b9a09a"/>
+              <stop offset="100%" stop-color="#8c7776"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="500" height="600" fill="url(#sky)"/>
+
+          <!-- Moon -->
+          <circle cx="365" cy="115" r="42" fill="#f8f1df"/>
+          <circle cx="379" cy="104" r="38" fill="#e6d7d0"/>
+
+          <!-- Fine stars -->
+          <g fill="#fff9ed">
+            <circle cx="93" cy="91" r="2.5"/>
+            <circle cx="135" cy="152" r="2"/>
+            <circle cx="420" cy="211" r="2"/>
+            <circle cx="301" cy="67" r="2"/>
+            <circle cx="70" cy="230" r="1.5"/>
+            <circle cx="451" cy="147" r="2"/>
+          </g>
+
+          <!-- Tiny outlined heart -->
+          <path d="M245 120
+                   C226 102 207 126 245 154
+                   C283 126 264 102 245 120Z"
+                fill="none" stroke="#a46e76" stroke-width="1.6"/>
+
+          <!-- Distant hills -->
+          <path d="M0 360 Q100 265 215 356 T500 333 V600 H0Z"
+                fill="#d0b9ae"/>
+          <path d="M0 423 Q140 345 270 408 T500 391 V600 H0Z"
+                fill="#b59a92"/>
+
+          <!-- Bench -->
+          <g stroke="#715c5a" stroke-width="7" stroke-linecap="round" fill="none">
+            <path d="M114 438 H392"/>
+            <path d="M130 456 H378"/>
+            <path d="M153 455 L142 518"/>
+            <path d="M355 455 L369 518"/>
+          </g>
+
+          <!-- Woman: flowing hair and coat, back view -->
+          <path d="M175 291
+                   Q151 255 169 215
+                   Q187 177 220 194
+                   Q247 205 239 253
+                   L232 310 L193 325Z"
+                fill="#5e4143"/>
+
+          <!-- Woman head -->
+          <ellipse cx="204" cy="231" rx="26" ry="34"
+                   fill="#c88f79"/>
+
+          <!-- Hair over head -->
+          <path d="M177 230
+                   Q164 191 198 187
+                   Q232 185 233 220
+                   Q220 203 204 204
+                   Q191 220 177 230Z"
+                fill="#594044"/>
+
+          <!-- Woman coat -->
+          <path d="M176 276
+                   Q152 283 143 322
+                   L124 429
+                   Q157 449 204 444
+                   L220 323
+                   Q210 284 176 276Z"
+                fill="#f2e4d8"/>
+
+          <!-- Woman hair down back -->
+          <path d="M179 236
+                   Q164 256 169 293
+                   L181 325 L197 290 L211 324
+                   L225 279 L226 230Z"
+                fill="#69494a"/>
+
+          <!-- Man: hair -->
+          <ellipse cx="285" cy="232" rx="30" ry="37"
+                   fill="#c18a74"/>
+          <path d="M254 231
+                   Q247 191 278 187
+                   Q310 183 316 218
+                   L306 230 L299 210
+                   Q279 226 254 231Z"
+                fill="#493b3a"/>
+
+          <!-- Man jacket -->
+          <path d="M259 275
+                   Q232 285 227 324
+                   L239 439
+                   Q286 456 336 438
+                   L324 320
+                   Q310 280 293 275Z"
+                fill="#744a52"/>
+
+          <!-- Man arm behind woman -->
+          <path d="M245 306 Q219 321 204 347"
+                fill="none" stroke="#c18a74" stroke-width="12"
+                stroke-linecap="round"/>
+
+          <!-- Hands gently touching -->
+          <path d="M205 347 Q212 356 223 350"
+                fill="none" stroke="#c18a74" stroke-width="10"
+                stroke-linecap="round"/>
+
+          <!-- Clothing line details -->
+          <path d="M271 296 L281 374"
+                fill="none" stroke="#9c6c70" stroke-width="2"/>
+          <path d="M174 325 L159 390"
+                fill="none" stroke="#d6bdb0" stroke-width="2"/>
+
+          <!-- Foreground -->
+          <path d="M0 503 Q110 466 214 510 T500 487 V600 H0Z"
+                fill="url(#ground)"/>
+
+          <!-- Flowers -->
+          <g fill="#f5e7dc" opacity=".95">
+            <circle cx="65" cy="481" r="5"/>
+            <circle cx="74" cy="474" r="5"/>
+            <circle cx="82" cy="482" r="5"/>
+            <circle cx="74" cy="489" r="5"/>
+            <circle cx="74" cy="481" r="3" fill="#a47774"/>
+            <circle cx="422" cy="478" r="5"/>
+            <circle cx="431" cy="471" r="5"/>
+            <circle cx="439" cy="479" r="5"/>
+            <circle cx="431" cy="486" r="5"/>
+            <circle cx="431" cy="478" r="3" fill="#a47774"/>
+          </g>
+
+          <g stroke="#6c7460" stroke-width="2" fill="none">
+            <path d="M74 486 Q67 508 59 520"/>
+            <path d="M431 484 Q438 505 448 512"/>
+          </g>
+
+          <text x="250" y="555"
+                text-anchor="middle"
+                font-family="Georgia,serif"
+                font-size="14"
+                letter-spacing="4"
+                fill="#fff4e9">YOU CAN KEEP GOING</text>
+        </svg>
+
+      </div>
+      <div class="art-caption">a reminder that you are loved.</div>
+    </div>
+  </section>
+
+  <div class="divider">♡</div>
+
+  <section class="section message" id="reminder">
+    <div class="small-label">WHENEVER YOU NEED IT</div>
+    <h2>اقرأ الكلام ده على مهلك.</h2>
+
+    <p class="description">
+      يا عفيفي، مش لازم كل حاجة تتحل النهارده.
+      ومش لازم تبقى أقوى شخص في الدنيا طول الوقت.
+      خد وقتك، رتّب أفكارك، وابدأ من جديد لما تكون مستعد.
+      المهم متحكمش على مستقبلك من يوم صعب.
+    </p>
+
+    <div class="quote-box">
+      <div class="quote-number" id="number">NOTE NO. 01 / 06</div>
+
+      <div class="quote" id="quote">
+        أنا مؤمنة إنك تقدر توصل، حتى لو الطريق لسه طويل.
+      </div>
+
+      <button class="outline" onclick="nextNote()">
+        محتاج أسمع كلام تاني ←
+      </button>
+    </div>
+  </section>
+
+  <section class="section letter-section" id="letter">
+    <div class="small-label">A LETTER FROM MARIAM</div>
+    <h2>حاجة من قلبي ليك.</h2>
+
+    <p class="description">
+      مش هقولك إن كل حاجة هتبقى سهلة،
+      بس هفكرك إنك تستاهل تحاول علشان نفسك.
+    </p>
+
+    <div class="letter-card">
+      <div class="letter-top">عزيزي عفيفي،</div>
+
+      <button class="primary" id="openBtn" onclick="openLetter()">
+        افتح الجواب
+      </button>
+
+      <div class="letter-content" id="letterContent">
+        <p>
+          نفسي لما تتعب متفتكرش إنك ضعيف، ولما تتأخر متفتكرش إنك فشلت.
+          كل إنسان ليه رحلته، وليه أيام بيكون فيها قادر يعمل كل حاجة،
+          وأيام تانية بيحتاج فيها بس إنه يرتاح.
+        </p>
+
+        <p>
+          عايزاك تكمل في الحاجات اللي بتحبها، وتدي لنفسك فرصة،
+          وتفتكر إن قيمتك مش متوقفة على إنجاز أو نتيجة.
+          أنا بتمنى أشوفك مبسوط بنفسك، وفخور بكل خطوة عملتها،
+          حتى الخطوات الصغيرة اللي محدش خد باله منها.
+        </p>
+
+        <p>
+          ولما الدنيا تضيق عليك، افتكر إنك مش مضطر تواجه كل حاجة لوحدك.
+          اتكلم، ارتاح، اطلب المساعدة لما تحتاجها، وبعدها جرّب تاني.
+        </p>
+
+        <p>
+          أتمنى لك أيام أهدى، وقلب مطمئن، وأحلام تتحقق واحدة واحدة.
+          خليك مكمل، بس خليك حنين على نفسك كمان.
+        </p>
+
+        <div class="signature">
+          بكل الحب،<br>
+          مريم ♡
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="closing">
+  <div class="names">مريم & عفيفي</div>
+  <p>رسالة صغيرة، علشان تفتكر إنك تستاهل كل خير.</p>
+  <div style="font-size:20px">♡</div>
+</section>
+
+<footer>MADE WITH LOVE · MARIAM © 2026</footer>
+
+<script>
+const notes = [
+  "أنا مؤمنة إنك تقدر توصل، حتى لو الطريق لسه طويل.",
+  "خد نفس عميق. مش لازم تحل كل مشاكلك في يوم واحد.",
+  "افتكر كل مرة قلت مش هقدر، وبعدها قدرت تكمل.",
+  "مش مطلوب منك الكمال. المطلوب إنك تدي نفسك فرصة.",
+  "من حقك ترتاح، ومن حقك تبدأ من جديد من غير ما تلوم نفسك.",
+  "يا عفيفي، أتمنى تبقى يوم من الأيام فخور بنفسك قد ما أنا بتمنى لك الخير."
+];
+
+let index = 0;
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function nextNote() {
+  index = (index + 1) % notes.length;
+
+  const quote = document.getElementById("quote");
+  quote.style.opacity = 0;
+
+  setTimeout(() => {
+    quote.textContent = notes[index];
+    document.getElementById("number").textContent =
+      `NOTE NO. ${String(index + 1).padStart(2, "0")} / 06`;
+    quote.style.opacity = 1;
+  }, 250);
+}
+
+function openLetter() {
+  document.getElementById("letterContent").classList.add("open");
+  document.getElementById("openBtn").style.display = "none";
+}
+</script>
+
+</body>
+</html>
